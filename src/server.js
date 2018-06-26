@@ -6,4 +6,8 @@ import { signin, protect } from "./api/modules/auth";
 // Declare an app from express
 const app = express();
 
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
+
 export default app;

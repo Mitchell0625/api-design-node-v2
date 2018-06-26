@@ -4,10 +4,7 @@ import { createServer } from "http";
 import app from "./server";
 let currentApp = app;
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
-
+//start the server in separate file to test in isolation
 app.listen(3001, () => {
   console.log("Listening on port 3001");
 });
