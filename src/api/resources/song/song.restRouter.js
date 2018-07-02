@@ -3,7 +3,7 @@ import songController from "./song.controller";
 
 export const songRouter = express.Router();
 
-songRounter.param("id", songController.findByParam);
+songRouter.param("id", songController.findByParam);
 songRouter
   .route("/")
   .get(songController.getAll)
