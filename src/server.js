@@ -9,9 +9,9 @@ const apiRouter = express.Router();
 setupMiddware(app);
 connect();
 // setup basic routing for index route
-apiRouter.use("/api", restRouter);
+
 app.use("/signin", signin);
-app.use("/api", apiRouter);
+app.use("/api", restRouter);
 
 // catch all
 app.all("*", (req, res) => {
