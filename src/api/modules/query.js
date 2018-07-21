@@ -34,42 +34,42 @@ export const createOne = model => (req, res, next) => {
     .then(result => {
       res.status(201).json(result);
     })
-    .catch(err => res.status(500).send("There is an error"));
+    .catch(err => res.status(500).json(err));
 };
 
 export const updateOne = model => async (req, res, next) => {
   controllers
-    .updateOne(docToUpdate, update)
-    .then(result => res.status(200).send(result))
-    .catch(err => res.status(500).send("There is an error"));
+    .updateOne(req.docFromId, req.body)
+    .then(result => res.status(201).json(result))
+    .catch(err => res.status(500).json(err));
 };
 
 export const deleteOne = model => (req, res, next) => {
   controllers
-    .deleteOne(docToDelete)
-    .then(() => res.status(200).send("Deleted successfully"))
-    .catch(err => res.status(500).send("There is an error"));
+    .deleteOne(req.docFromId)
+    .then(() => res.status(201).send("Deleted successfully"))
+    .catch(err => res.status(500).json(err));
 };
 
 export const getOne = model => (req, res, next) => {
   controllers
-    .getOne(docToGet)
+    .getOne(req.docFromId)
     .then(result => res.status(200).json(result))
-    .catch(err => res.status(500).send("There is an error"));
+    .catch(err => res.status(500).json(err));
 };
 
 export const getAll = model => (req, res, next) => {
   controllers
     .getAll(model)
     .then(results => res.status(200).json(results))
-    .catch(err => res.status(500).send("There is an error"));
+    .catch(err => res.status(500).json(err));
 };
 
 export const findByParam = model => (req, res, next, id) => {
   controllers
     .findByParam(model, id)
     .then(result => res.status(200).json(result))
-    .catch(err => res.status(500).send("There is an error"));
+    .catch(err => res.status(500).json(err));
 };
 
 export const generateControllers = (model, overrides = {}) => {
